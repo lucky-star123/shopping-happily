@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="applicable-device" content="mobile" />
+	<!-- 移动端 浏览器中页面将以原始大小显示，不允许缩放 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+
+	<!-- iphone会把一串数字识别为电话号码，点击的时候会提示是否呼叫，屏蔽这功能则把telephone设置为no -->
+	<meta content="telephone=no" name="format-detection"/> 
+	<!-- iphone的私有标签，默认值为default（白色），可以定为black（黑色）和black-translucent（灰色半透明） -->
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<!-- iphone设备的是有标签 允许全屏模式浏览，隐藏浏览器导航栏 -->
+	<meta content="yes" name="apple-mobile-web-app-capable"/>
+	<!-- 全屏显示 
+	<meta content="yes" name="apple-touch-fullscreen"/>
+	<!-- UC强制全屏 
+	<meta name="full-screen" content="yes">
+	<!-- QQ强制全屏 
+	<meta name="x5-fullscreen" content="true">
+	<!-- 屏蔽百度转码 -->
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<!-- css文件 -->
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/normalize.css">
+    
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <!-- js文件 -->
+    <script src="js/common.js"></script>
+    <script src="js/jquery-1.11.0.js"></script>	
+	<script src="js/swiper.min.js"></script>
+	<script src="js/swiper.animate1.0.2.min.js"></script>
+	
+	
+     
+</head>
+<body>
+     <!-- 以下是header部分 -->
+	<header>
+        <div class="header-fixed">
+            <span id="select">
+                <select name="" id="city" >
+                    <option value="zhengzhou">郑州</option>
+                    <option value="changzhou">常州</option>
+                    <option value="suzhou">苏州</option>
+                    <option value="anqin">安庆</option>
+                    <option value="nanjing">南京</option>
+                    <option value="hangzhou">杭州</option>
+                </select>
+            </span>
+            <div>
+                <img src="images2/arrow.png" alt="" id="top01">
+                <input type="text" placeholder="请输入商品名、品类、或商圈">
+                <img src="images2/2code.png" alt="">
+            </div>
+        </div>
+    </header>
+
+
+<script>
+var m=0;
+    $("#top01").click(function(){
+        m++;
+        if(m%2==0){
+            $("#top01").css("transform","rotate(360deg)");
+            $("#city").attr("size","1");
+        }else{
+            $("#top01").css("transform","rotate(180deg)");
+            $("#city").attr("size","6");
+        }
+        
+    });
+    $("#city").click(function(){
+        $("#top01").css("transform","rotate(360deg)");
+        $("#city").attr("size","1");
+    });
+  </script>
+			
+	<!-- 以下是title部分 -->
+	        <!-- 以下是轮播部分 -->
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<img src="images2/banner1.png" class="banner1">
+			</div>
+			<div class="swiper-slide">
+				<img src="images2/banner2.png" class="banner2">
+			</div>
+		</div>
+	</div>
+	<script>
+		var mySwiper=new Swiper(".swiper-container",{
+            loop:true,
+            autoplay:4000,
+           onInit:function(swiper){
+            	swiperAnimateCache(swiper);
+            	swiperAnimate(swiper);
+            },
+            onSlideChangeEnd:function(swiper){
+				swiperAnimate(swiper);	
+			}
+    	});
+          
+	</script>
+     <!-- 以下是title-1部分 -->
+     <!-- 以下是title-1-1部分 -->
+     <div  style="height:135px">
+     <div class="title-1-1">
+     	<img src="images2/food.jpg" id="img1">
+     	
+     	<img src="images2/hotel.png" id="img2">
+     	
+     	<img src="images2/view.jpg" id="img3">
+     	
+     	<img src="images2/drink.jpg" id="img4">
+    </div>
+    
+     	<span class="food">美食</span>
+        <span class="hotel">酒店</span>
+        <span class="view">景点</span>
+        <span class="drink">休闲娱乐</span>
+     <!-- 以下是title-1-2部分 -->
+    <div class="title-1-2"> 
+       <img src="images2/charge.jpg" id="img5">
+     	
+     	<img src="images2/film.jpg" id="img6">
+     	
+     	<img src="images2/travel.jpg" id="img7">
+     	
+     	<img src="images2/shop.png" id="img8">
+    </div>
+     
+    	<span class="charge">闪惠团购</span>
+    	<span class="film">电影</span>
+    	<span class="travel">度假套餐</span>
+    	<span class="shop">购物</span>
+    </div>
+         <!-- 以下是分割线1部分 -->
+        <div id="liner1"></div> 
+         <!-- 以下是title-2部分 -->
+         <!-- 以下是title-2 head部分 -->
+         <div id="mark2">
+         	<div id="sign"></div>
+         	<div class="free">免费体验区</div>
+
+         	<div class="start">距离开始: </div>
+         	<div id="times">                
+            </div>
+         	<div class="more"><a href="">查看更多></a></div>
+         </div>
+          <script>
+              $(function(){
+                function getTime(){
+                    var endTime=new Date('2017/10/01 00:00:00');
+                    var newTime=new Date();
+                    var t=endTime.getTime()-newTime.getTime();
+                    var d=0;
+                    var h=0;
+                    var m=0;
+                    var s=0;
+                    if(t>0){
+                        d=Math.floor(t/1000/60/60/24);
+                        h=Math.floor(t/1000/60/60%24);
+                        m=Math.floor(t/1000/60%60);
+                        s=Math.floor(t/1000%60);
+                    }
+                    document.getElementById('times').innerHTML=d+'天'+h+'时'+m+'分'+s+'秒';
+                }
+                setInterval(getTime,1000);
+              });
+
+          </script>
+         <!-- 以下是title-2部分 -->
+         <div id="title-2" class="clear">
+         	<div class="phto1">
+         		<img src="images2/ice-cream.png" id="ice">冰淇淋
+         	</div>
+         	<div class="phto2">
+         		<img src="images2/vegetible_05.png" id="vegetible_05">果树饮料
+         	</div>
+         	<div class="phto3">
+         		<img src="images2/fruit.png" id="fruit">水果拼盘
+         	</div>
+         	<div class="phto4">
+         		<img src="images2/pizza.png" id="pizza">美味披萨
+         	</div>
+         	<div class="phto5">
+         		<img src="images2/car.png" id="car">洗车擦车
+         	</div>
+         	<div class="phto6">
+         		<img src="images2/photo.png" id="photo">摄影写真
+         	</div>
+         	<div class="phto7">
+         		<img src="images2/table.png" id="table">台球休闲
+         	</div>
+         	<div class="phto8">
+         		<img src="images2/foot.png" id="foot">足浴养生
+         	</div>
+         </div>
+         <!-- 以下是title-3部分 -->
+         <!-- 以下是title-3 head部分 -->
+         <div id="mark3">
+         	<div class="wealth">玖邦尼创富</div>
+         	<span class="shopping">邦尼币购物，超值超划算！</span>
+         	<span class="all">查看全部></span>
+         </div>
+            <!-- 以下是title-3部分 -->
+         	<div id="content">
+         		<div class="content1">
+         		    <div class="content1-1">
+         		      <span>养生</span>
+         		      <span style="color:#999">强身保健</span>
+         		    </div>
+         		   <img src="images2/SPA.png" class="SPA"> 
+         		</div>
+
+         		<div class="content2">
+         			<div class="content2-1">
+         		    <span>美食</span>
+         		    <span style="color:#999">舌尖美味</span>
+         		    </div>
+         		    <img src="images2/delicious.png" class="delicious">
+         		</div>
+         		<div class="content3">
+         			<div class="content3-1">
+         		    <span>娱乐</span>
+         		    <span style="color:#999">嗨翻全场</span>
+         		    </div>
+         		    <img src="images2/KTV.png" class="KTV">
+         		</div>
+         		<div class="content4">
+         			<div class="content4-1">
+         		    <span>丽人</span>
+         		    <span style="color:#999">华丽蜕变</span>
+         		    </div>
+         		    <img src="images2/beauty.png" class="beauty">
+         		</div>
+         		<div class="content5">
+         			<div class="content5-1">
+         		    <span>电影</span>
+         		    <span style="color:#999">身临其境</span>
+         		    </div>
+         		    <img src="images2/move.png" class="move">
+         		</div>
+         		<div class="content6">
+         			<div class="content6-1">
+         		    <span>写真</span>
+         		    <span style="color:#999">定格美丽</span>
+         		    </div>
+         		    <img src="images2/photograph.png" class="photograph">
+         		</div>
+         		<div class="content7">
+         			<div class="content7-1">
+         		    <span>住宿</span>
+         		    <span style="color:#999">身心放松</span>
+         		    </div>
+         		    <img src="images2/accommodate.png" class="accommodate">
+         		</div>
+         		<div class="content8">
+         			<div class="content8-1">
+         		    <span>培训</span>
+         		    <span style="color:#999">技能提升</span>
+         		    </div>
+         		    <img src="images2/guitar.png" class="guitar">
+         		</div>
+         	</div>
+       <!-- 以下是分割线2部分 -->
+        <div id="liner2"></div> 
+       <!-- 以下是title-4部分 -->
+         <!-- 以下是title-4 head部分 -->
+         <div id="mark4">
+         	<div class="like">猜你喜欢</div>
+         	<span class="check">查看所有 >> </span>
+         </div>
+         
+         <!-- 以下是title-4部分 -->
+         <!-- 以下是title-4第一部分 -->
+         <div id="main1">
+         	<div class="left-1">
+         		<img src="images2/cake.png" id="cake">
+         	</div>
+         	<div class="right-1">
+         		<div class="one">
+                    <div style="font-size:0.12rem">香贝贝蛋糕/蛋挞</div>
+         			<div style="font-size:0.1rem;color:#ccc">< 1km</div>
+         		</div>
+         		<div class="two" style="font-size:0.12rem;line-height:0.25rem;text-align:left;text-indent:40px">高皇寨小区门向西30米</div>
+         		<div class="three">
+         			<div style="font-size:0.12rem">￥49.00</div>
+         			<div style="font-size:0.1rem;color:#ccc">月销量：1532份</div>
+         		</div>
+         	</div>
+         </div>
+
+         	     <!-- 以下是title-4部分 -->
+         	     <!-- 以下是title-4第二部分 -->
+         <div id="main2">
+         	<div class="left-2">
+         		<img src="images2/dish.png" id="dish">
+         	</div>
+         	<div class="right-2">
+         		<div class="one">
+                    <div style="font-size:0.12rem">天天见面麻辣香锅</div>
+         			<div style="font-size:0.1rem;color:#ccc">< 1km</div>
+         		</div>
+         		<div class="two" style="font-size:0.12rem;line-height:0.25rem;text-align:left;text-indent:40px">经三路与陈旭路交叉口</div>
+         		<div class="three">
+         			<div style="font-size:0.12rem">￥49.00</div>
+         			<div style="font-size:0.1rem;color:#ccc">月销量：1532份</div>
+         		</div>
+         	</div>
+         </div>
+         	<!-- 以下是title-4部分 -->
+         	     <!-- 以下是title-4第三部分 -->
+         <div id="main3">
+         	<div class="left-3">
+         		<img src="images2/noodle.png" id="noodle">
+         	</div>
+         	<div class="right-3">
+         		<div class="one">
+                    <div style="font-size:0.12rem">重庆小面</div>
+         			<div style="font-size:0.1rem;color:#ccc">< 1km</div>
+         		</div>
+         		<div class="two" style="font-size:0.12rem;line-height:0.25rem;text-align:left;text-indent:40px">李南二街345号</div>
+         		<div class="three">
+         			<div style="font-size:0.12rem">￥49.00</div>
+         			<div style="font-size:0.1rem;color:#ccc">月销量：1532份</div>
+         		</div>
+         	</div>
+         </div>
+
+<div id="containner1" style="display:none">
+     <div id="main1">
+            <div class="left-1">
+                <img src="images2/cake.png" id="cake">
+            </div>
+            <div class="right-1">
+                <div class="one">
+                    <div style="font-size:0.12rem">香贝贝蛋糕/蛋挞</div>
+                    <div style="font-size:0.1rem;color:#ccc">< 1km</div>
+                </div>
+                <div class="two" style="font-size:0.12rem;line-height:0.25rem;text-align:left;text-indent:40px">高皇寨小区门向西30米</div>
+                <div class="three">
+                    <div style="font-size:0.12rem">￥49.00</div>
+                    <div style="font-size:0.1rem;color:#ccc">月销量：1532份</div>
+                </div>
+            </div>
+     </div>
+        <div id="main2">
+            <div class="left-2">
+                <img src="images2/dish.png" id="dish">
+            </div>
+            <div class="right-2">
+                <div class="one">
+                    <div style="font-size:0.12rem">天天见面麻辣香锅</div>
+                    <div style="font-size:0.1rem;color:#ccc">< 1km</div>
+                </div>
+                <div class="two" style="font-size:0.12rem;line-height:0.25rem;text-align:left;text-indent:40px">经三路与陈旭路交叉口</div>
+                <div class="three">
+                    <div style="font-size:0.12rem">￥49.00</div>
+                    <div style="font-size:0.1rem;color:#ccc">月销量：1532份</div>
+                </div>
+            </div>
+         </div>
+       <div id="main3">
+            <div class="left-3">
+                <img src="images2/noodle.png" id="noodle">
+            </div>
+            <div class="right-3">
+                <div class="one">
+                    <div style="font-size:0.12rem">重庆小面</div>
+                    <div style="font-size:0.1rem;color:#ccc">< 1km</div>
+                </div>
+                <div class="two" style="font-size:0.12rem;line-height:0.25rem;text-align:left;text-indent:40px">李南二街345号</div>
+                <div class="three">
+                    <div style="font-size:0.12rem">￥49.00</div>
+                    <div style="font-size:0.1rem;color:#ccc">月销量：1532份</div>
+                </div>
+            </div>
+        </div>
+
+</div>        
+         
+         <!-- 查看全部 -->
+         <div id="check-for-all" onclick="doChange()">查看全部团购</div>
+         <!-- bottom -->
+         <div id="bottom">
+         	<div id="bottom-1">
+             <img src="images2/HOME.png" class="HOME">
+         	商城首页</div>
+         	<div id="bottom-2">
+         	<img src="images2/cooperation.png" class="cooperation">商家合作</div>
+         	<div id="bottom-3">
+         	<img src="images2/shaopping-cart.png" class="shaopping-cart">购物车</div>
+         	<div id="bottom-4">
+         	<img src="images2/list.png" class="list">订单列表</div>
+         	<div id="bottom-5">
+         	<img src="images2/card.png" class="card">会员中心</div>
+         </div>
+
+         <script>
+             function doChange(){
+                var container=document.getElementById("containner1");
+                if(container.style.display=="none"){
+                    container.style.display="block";
+                     var checkAll=document.getElementById("check-for-all");
+                    checkAll.innerHTML="收起";
+                }else{
+                    container.style.display="none";
+                    var checkAll=document.getElementById("check-for-all");
+                    checkAll.innerHTML="查看全部团购";
+                }
+             }
+         </script>
+</body>
+</html>
+	
